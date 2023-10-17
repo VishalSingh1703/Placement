@@ -1,0 +1,18 @@
+https://leetcode.com/problems/palindrome-number/
+
+class Solution {
+public:
+    bool isPalindrome(int x) {
+        if(x<0) return false;
+        string s = to_string(x);
+        int len = s.length();
+        int i = 0;
+        while(len>1)
+        {
+            if(s[i]!=s[s.length()-i-1]) return false;
+            len-=2;
+            i++;
+        }
+        return true;
+    }
+};
