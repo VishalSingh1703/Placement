@@ -1,0 +1,26 @@
+https://www.codingninjas.com/studio/problems/hcf-and-lcm_840448?utm_source=striver&utm_medium=website&utm_campaign=a_zcoursetuf
+
+#include <bits/stdc++.h>
+int calcGCD(int n, int m){
+    int min = INT_MIN;
+    int max = 0;
+    int temp = 0;
+    if(m<=n) 
+    {
+        min = m;
+        max = n;
+    }
+    else
+    {
+        min = n;
+        max = m;
+    }
+    if(max%min==0) return min;
+    else 
+    {
+        temp = max;
+        max = min;
+        min = temp%min;
+    }
+    return calcGCD(max, min);
+}
