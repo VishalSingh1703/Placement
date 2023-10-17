@@ -1,0 +1,9 @@
+https://www.codingninjas.com/studio/problems/-print-n-times_8380707?utm_source=striver&utm_medium=website&utm_campaign=a_zcoursetuf
+
+vector<string> printNTimes(int n) {
+	vector<string> ans;
+	if(n==0) return ans;
+	ans = printNTimes(n-1);
+	ans.push_back("Coding Ninjas ");
+	return ans;
+}
