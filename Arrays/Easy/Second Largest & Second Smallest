@@ -1,0 +1,27 @@
+https://www.codingninjas.com/studio/problems/ninja-and-the-second-order-elements_6581960?utm_source=striver&utm_medium=website&utm_campaign=a_zcoursetuf&leftPanelTab=1
+
+vector<int> getSecondOrderElements(int n, vector<int> a) {
+    vector<int> ans;
+    int lar = a[0], slar = -1, sma = a[n-1], ssma = sma+1;
+    for(int i = 1; i<n; i++)
+    {
+        if(a[i]>lar)
+        {
+            slar = lar;
+            lar = a[i];
+        }
+        else if(a[i]<lar && a[i]>slar) slar = a[i];
+    }
+    for(int i = n-1; i>=0; i--)
+    {
+        if(a[i]<sma)
+        {
+            ssma = sma;
+            sma = a[i];
+        }
+        else if(a[i]>sma && a[i]<ssma) ssma = a[i];
+    }
+    ans.push_back(slar);
+    ans.push_back(ssma);
+    return ans;
+}
