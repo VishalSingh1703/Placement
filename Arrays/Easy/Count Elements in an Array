@@ -1,0 +1,16 @@
+https://www.codingninjas.com/studio/problems/remove-duplicates-from-sorted-array_1102307?utm_source=striver&utm_medium=website&utm_campaign=a_zcoursetuf&leftPanelTab=1
+
+int removeDuplicates(vector<int> &arr, int n) {
+	vector<int> ans;
+	ans.resize(arr[n-1], 0);
+	for(int i = 0; i<n; i++)
+	{
+		ans[arr[i]] += 1;
+	}
+	int count = 0;
+	for(int i = 0; i<=ans.size(); i++)
+	{
+		if(ans[i]!=0) count += 1;
+	}
+	return count;
+}
