@@ -1,0 +1,13 @@
+https://www.codingninjas.com/studio/problems/find-the-single-element_6680465?utm_source=striver&utm_medium=website&utm_campaign=a_zcoursetuf&leftPanelTab=0
+
+
+#include<vector>
+
+int getSingleElement(vector<int> &arr){
+	int ans = arr[0];
+	for(int i = 1; i<arr.size(); i++)
+	{
+		ans ^= arr[i];
+	}
+	return ans;
+}
