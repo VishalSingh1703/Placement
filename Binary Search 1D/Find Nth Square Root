@@ -1,0 +1,24 @@
+https://www.codingninjas.com/studio/problems/nth-root-of-m_1062679?utm_source=striver&utm_medium=website&utm_campaign=a_zcoursetuf&leftPanelTabValue=SUBMISSION
+
+// Fails at large test cases
+
+
+int NthRoot(int n, int m) 
+{
+    int left = 0, right = m/4;
+    long long mid;
+    long long ind;
+    while(left<=right)
+    {
+      ind = 1;
+      mid = (left + right)/2;
+      for(int i = 0; i<n; i++)
+      {
+        ind = ind * mid;
+      }
+      if(ind==m) return mid;
+      else if(ind<m) left = mid+1;
+      else right = mid-1;
+    }
+    return -1;
+}
