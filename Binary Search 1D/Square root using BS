@@ -1,0 +1,16 @@
+https://www.codingninjas.com/studio/problems/square-root-integral_893351?leftPanelTab=0%3Futm_source%3Dstriver&utm_medium=website&utm_campaign=a_zcoursetuf&leftPanelTabValue=SUBMISSION
+
+
+int floorSqrt(int n)
+{
+    int left = 0, right = n/2+1;
+    int ind, mid, ans;
+    while(left<=right)
+    {
+        long long mid = left + (right - left)/2;
+        long long ind = mid*mid;
+        if(ind<=n) left = mid + 1;
+        else right = mid - 1;
+    }
+    return right;
+}
