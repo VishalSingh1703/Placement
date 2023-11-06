@@ -1,0 +1,16 @@
+https://leetcode.com/problems/largest-odd-number-in-string
+
+
+class Solution {
+public:
+    string largestOddNumber(string num) {
+        int i = num.length()-1;
+        int j = 0;
+        while(i>=0)
+        {
+            if((int(num[i])%2)==1) return num.substr(j, i+1);
+            i--;
+        }
+        return "";
+    }
+};
