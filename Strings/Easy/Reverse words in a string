@@ -1,0 +1,61 @@
+https://leetcode.com/problems/reverse-words-in-a-string/
+
+
+// class Solution {
+// public:
+//     string reverseWords(string s) {
+//         string result;
+//         int i = 0;
+//         int n = s.length();
+//         while(i<n)
+//         {
+//             while(i<n && s[i]==' ') i++;
+//             if(i>=n) break;
+//             int j = i+1;
+//             while(j<n && s[j]!=' ')j++;
+//             string sub = s.substr(i,j-1);
+//             if(result.length() == 0) result = sub;
+//             else result = sub + " " + result;
+//             i = j+1;
+//         }
+//         return result;
+//     }
+// };
+
+
+class Solution {
+public:
+    void reverseword(string &s, int i, int j){  //reverse string from i to j
+        while(i<j){
+            char t = s[i];
+            s[i++] = s[j];
+            s[j--] = t;
+        }
+    }
+    string reverseWords(string s) {
+        int i=0, j=0;
+        int l=0;
+        int len = s.size();
+        
+        int wordcount = 0;
+        
+        while(true){
+            while(i<len && s[i] == ' ') //skip spaces in front
+                i++;
+            if(i==len)
+                break;
+            if(wordcount)               //add space between the middle words
+                s[j++] = ' ';
+            l=j;
+            while(i<len && s[i] != ' '){  //place the word at the starting, removing spaces
+                s[j] = s[i];
+                j++, i++;
+            }
+            reverseword(s,l,j-1);       //reverse word 
+            wordcount++;                
+        }
+        s.resize(j);                    //resize s to smaller string after removing spaces
+        reverse(s.begin(), s.end());     //Finally, reverse entire string to get the result
+        return s;
+    }
+};
