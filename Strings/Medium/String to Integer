@@ -1,0 +1,111 @@
+https://leetcode.com/problems/string-to-integer-atoi/
+
+// class Solution {
+// public:
+//     int myAtoi(string s) {
+//         int n = 0;
+//         bool flag = true;
+//         for(int i = 0; i<s.length(); i++)
+//         {
+//             if(s[i]==' ')continue;
+//             else if(s[i]=='-') flag = false;
+//             else if(int(s[i])<58 && int(s[i])>47)
+//             {
+//                 if(n>=214748364)
+//                 {
+//                     n = 2147483648; 
+//                     break;
+//                 }
+//                 else
+//                 {
+//                     n *= 10;
+//                     n += int(s[i])-48;
+//                 }
+//             }
+//             else if(n==0 && ((int(s[i])>64 && int(s[i]<91)) || (int(s[i]>96) && int(s[i])<123))) return 0;
+//         }
+//         if(flag == false) n *= -1;
+//         return n;
+//     }
+// };
+
+// class Solution {
+// public:
+//     int myAtoi(string s) {
+//         int n = 0;
+//         int flag = 1;
+//         int i = 0;
+//         while(i<s.length() && s[i]==' ') i++;
+//         if(i>s.length()) return 0;
+//         if(s[i]=='-') 
+//         {
+//             flag = -1;
+//             i++;
+//         }
+//         else if(s[i]=='+') i++;
+//         if(i>s.length()) return 0;
+//         while(i<s.length() && s[i]>='0' && s[i]<='9')
+//         {
+//             if(n>INT_MAX/10 || n<INT_MIN/10 && s[i] - '0' > INT_MAX%10)
+//             {
+//                 return (flag == 1)?INT_MAX : INT_MIN;
+//             }
+//             n *= 10;
+//             n += int(s[i])-48;
+//             i++;
+//         }
+//         return n*flag;
+//     }
+// };
+
+
+
+// class Solution {
+// public:
+//     int myAtoi(string s) {
+//         if((int(s[0])<48 || int(s[0])>57) && s[0]!=' ' && s[0]!='-') return 0;
+//         int ans = 0;
+//         float c = 1;
+//         bool flag = true;
+//         for(int i = s.size()-1; i>=0; i--)
+//         {
+//             if(int(s[i])>47 && int(s[i])<58)
+//             {
+//                 ans += c*(int(s[i]) - '0');
+//                 c*=10;
+//             }
+//             else if(flag == true && s[i]=='-')
+//             {
+//                 ans *= -1;
+//                 flag = false;
+//             }
+//         }
+//         return ans;
+//     }
+// };
+
+class Solution {
+public:
+    int myAtoi(string s) {
+        int len = s.size();
+        double num = 0;
+        int i=0;
+        while(s[i] == ' '){
+            i++;
+        }
+        bool positive = s[i] == '+';
+        bool negative = s[i] == '-';
+        positive == true ? i++ : i;
+        negative == true ? i++ : i;
+        while(i < len && s[i] >= '0' && s[i] <= '9'){
+            num = num*10 + (s[i]-'0');
+            i++;
+        }
+        num = negative ? -num : num;
+        cout<<num<<endl;
+        num = (num > INT_MAX) ? INT_MAX : num;
+        num = (num < INT_MIN) ? INT_MIN : num;
+        cout<<num<<endl;
+        return int(num);
+    }
+};
