@@ -1,0 +1,5 @@
+// Program to return number of digits in a integer
+
+
+int count=(int)(log10(n)+1);
+return count
