@@ -1,0 +1,22 @@
+https://leetcode.com/problems/count-number-of-homogenous-substrings/?envType=daily-question&envId=2023-11-09
+
+class Solution {
+public:
+    int countHomogenous(string s) {
+        long long  count;
+        long long sum = 0;
+        int i = 0;
+        while(i<s.length())
+        {
+            count = 1;
+            while(i+1<s.length() && s[i] == s[i+1])
+            {
+                count++;
+                i++;
+            }
+            sum += (count*(count+1))/2;
+            i++;
+        }
+        return sum % 1000000007;
+    }
+};
