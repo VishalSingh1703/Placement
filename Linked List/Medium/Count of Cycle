@@ -1,0 +1,43 @@
+https://www.codingninjas.com/studio/problems/find-length-of-loop_8160455?utm_source=striver&utm_medium=website&utm_campaign=a_zcoursetuf&leftPanelTabValue=SUBMISSION
+
+
+/**
+ * Definition of linked list:
+ *
+ * class Node {
+ * public:
+ *      int data;
+ *      Node *next;
+ *
+ *      Node(int data) {
+ *          this->data = data;
+ *          this->next = NULL;
+ *      }
+ * };
+ *
+ *************************************************************************/
+
+int lengthOfLoop(Node *head) {
+    Node *slow = head, *fast = head, *meet = head;
+    int count = 1;
+    slow = slow->next;
+    fast = fast->next->next;
+    while(fast!=slow && (fast!=NULL && fast->next!=NULL))
+    {
+        slow = slow->next;
+        fast = fast->next->next;
+    }
+    if(fast==NULL) return 0;
+    while(slow!=meet)
+    {
+        meet = meet->next;
+        slow = slow->next;
+    }
+    slow = slow->next;
+    while(slow!=meet)
+    {
+        slow = slow->next;
+        count++;
+    }
+    return count;
+}
