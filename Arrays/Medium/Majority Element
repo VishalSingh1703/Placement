@@ -1,0 +1,23 @@
+https://leetcode.com/problems/majority-element/
+
+
+class Solution {
+public:
+    int majorityElement(vector<int>& nums) {
+        int count = 1;
+        int flag = nums[0];
+        for(int i = 1; i<nums.size(); i++)
+        {
+            if(count == 0)flag = nums[i];
+            if(nums[i] == flag)
+            {
+                count++;
+            }
+            else if(nums[i] != flag)
+            {
+                count--;
+            }
+        }
+        return flag;
+    }
+};
