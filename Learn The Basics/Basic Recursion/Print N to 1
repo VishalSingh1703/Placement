@@ -1,0 +1,16 @@
+#include <iostream>
+using namespace std;
+
+void pt(int n)
+{
+    if(n==6) return;
+    n++;
+    pt(n);
+    cout<<n<<endl;
+}
+
+int main()
+{
+    pt(0);
+    return 0;
+}
