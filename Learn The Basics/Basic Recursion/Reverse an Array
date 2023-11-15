@@ -1,0 +1,8 @@
+https://www.codingninjas.com/studio/problems/reverse-an-array_8365444?utm_source=striver&utm_medium=website&utm_campaign=a_zcoursetuf&leftPanelTabValue=SUBMISSION
+
+vector<int> reverseArray(int n, vector<int> &nums)
+{
+    if(n == nums.size()/2) return nums;
+    swap(nums[nums.size()-n], nums[n-1]);
+    return reverseArray(n-1, nums);
+}
