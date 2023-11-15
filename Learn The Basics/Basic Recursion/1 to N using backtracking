@@ -1,0 +1,17 @@
+
+#include <iostream>
+
+using namespace std;
+
+void pt(int n)
+{
+    if(n==0) return;
+    pt(n-1);
+    cout<<n<<endl;
+}
+
+int main()
+{
+    pt(5);
+    return 0;
+}
