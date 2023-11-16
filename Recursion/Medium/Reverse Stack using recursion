@@ -1,0 +1,23 @@
+https://www.codingninjas.com/studio/problems/reverse-stack-using-recursion_631875?utm_source=striver&utm_medium=website&utm_campaign=a_zcoursetuf&leftPanelTabValue=SUBMISSION
+
+void insertAtBottom(stack<int> &stack, int ele)
+{
+    if(stack.empty())
+    {
+        stack.push(ele);
+        return;
+    }
+    int temp = stack.top();
+    stack.pop();
+    insertAtBottom(stack, ele);
+    stack.push(temp);
+}
+
+void reverseStack(stack<int> &stack) 
+{
+    if(stack.empty()) return;
+    int ele = stack.top();
+    stack.pop();
+    reverseStack(stack);
+    insertAtBottom(stack, ele);
+}
