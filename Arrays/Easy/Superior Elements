@@ -1,0 +1,18 @@
+https://www.codingninjas.com/studio/problems/superior-elements_6783446?utm_source=striver&utm_medium=website&utm_campaign=a_zcoursetuf&leftPanelTabValue=SUBMISSION
+
+
+vector<int> superiorElements(vector<int>& nums) {
+    vector<int> ans;
+    int mx = nums[nums.size()-1];
+    ans.push_back(mx);
+    for(int i = nums.size()-2; i>=0; i--)
+    {
+        if(nums[i]>mx)
+        {
+            mx = nums[i];
+            ans.push_back(mx);
+        }
+    }
+
+    return ans;
+}
