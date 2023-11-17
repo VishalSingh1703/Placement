@@ -1,0 +1,27 @@
+https://www.codingninjas.com/studio/problems/subarrays-with-sum-%E2%80%98k'_6922076?utm_source=striver&utm_medium=website&utm_campaign=a_zcoursetuf&leftPanelTabValue=PROBLEM
+
+vector<vector<int>> subarraysWithSumK(vector<int> a, long long k) {
+    long long sum = 0;
+    int i = 0, j = 0; 
+    vector<vector<int>> ans;
+    vector<int> nums;
+    while(i<a.size())
+    {
+        if(i<a.size()) sum+=a[i];
+        while(sum>k && j<=i)
+        {
+            sum-=a[j++];
+        }
+        if(sum==k)
+        {
+            for(int l = j; l<=i; l++)
+            {
+                nums.push_back(a[l]);
+            }
+            ans.push_back(nums);
+            while(!nums.empty())nums.pop_back();
+        }
+        i++;
+    }
+    return ans;
+}
