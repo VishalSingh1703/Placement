@@ -1,0 +1,16 @@
+https://www.codingninjas.com/studio/problems/subset-sum_630213?utm_source=striver&utm_medium=website&utm_campaign=a_zcoursetuf&leftPanelTabValue=SUBMISSION
+
+bool permute(int n, int k, vector<int> &nums, int sum, int index) {
+    if (sum == k)return true;
+    if(sum>k || index>=n) return false;
+    sum += nums[index];
+    if(permute(n, k, nums, sum, index+1)) return true;
+    sum -= nums[index];
+    if(permute(n, k, nums, sum, index+1)) return true;
+    return false;
+}
+
+bool isSubsetPresent(int n, int k, vector<int> &a)
+{
+    return permute(n, k, a, 0, 0);
+}
