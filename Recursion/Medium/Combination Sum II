@@ -1,0 +1,30 @@
+https://leetcode.com/problems/combination-sum-ii/submissions/1101368651/
+
+
+class Solution {
+public:
+    void permute(int index, int target, vector<int> &cand, vector<int> &ds, vector<vector<int>> &ans)
+    {
+        if(index == cand.size())
+        {
+            if(target == 0)ans.push_back(ds);
+            return;
+        }
+        if(cand[index] <= target)
+        {
+            ds.push_back(cand[index]);
+            permute(index + 1, target - cand[index], cand, ds, ans);
+            ds.pop_back();
+        }
+        while(index<cand.size() - 1 && cand[index] == cand[index+1]) index++;
+        permute(index + 1, target, cand, ds, ans);
+        
+    }
+    vector<vector<int>> combinationSum2(vector<int>& candidates, int target) {
+        sort(candidates.begin(), candidates.end());
+        vector<int> ds;
+        vector<vector<int>> ans;
+        permute(0, target, candidates, ds, ans);
+        return ans;
+    }
+};
