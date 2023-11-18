@@ -1,0 +1,32 @@
+https://www.codingninjas.com/studio/problems/-binary-strings-with-no-consecutive-1s._893001?utm_source=striver&utm_medium=website&utm_campaign=a_zcoursetuf&leftPanelTabValue=PROBLEM
+
+
+void permute(string s, vector<string> &ans, int N)
+{
+    if(s.length() == N)
+    {
+        ans.push_back(s);
+        return;
+    }
+    else
+    {
+        if(s.length() == 0 || s[s.length()-1] == '0')
+        {
+            permute(s + "0", ans, N);
+            permute(s + "1", ans, N);
+        }
+        else if(s[s.length()-1] == '1')
+        {
+            permute(s + "0", ans, N);
+        } 
+    }
+    return;
+}
+
+vector<string> generateString(int N) 
+{
+    vector<string> ans;
+    string s = "";
+    permute(s, ans, N);
+    return ans;
+}
