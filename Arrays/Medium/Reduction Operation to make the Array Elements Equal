@@ -1,0 +1,32 @@
+https://leetcode.com/problems/reduction-operations-to-make-the-array-elements-equal/
+
+
+class Solution {
+public:
+    int reductionOperations(vector<int>& nums) {
+        sort(nums.begin(), nums.end());
+        int n = nums.size()-1;
+        int count = 0;
+        int i = n;
+        while(i>0)
+        {
+            if(nums[i]!=nums[i-1]) count += n - i + 1;
+            i--;
+        }
+        return count;
+
+        // int n = nums.size();
+        // map<int, int> mp;
+        // for(auto i:nums)
+        // {
+        //     mp[i]++;
+        // }
+        // int ans = 0, pre = 0;
+        // for(auto i = mp.end(); i!=mp.begin(); i--)
+        // {
+        //     ans += i->second + pre;
+        //     pre += i->second;
+        // }
+        // return ans;
+    }
+};
