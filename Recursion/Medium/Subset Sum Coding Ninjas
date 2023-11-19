@@ -1,0 +1,20 @@
+https://www.codingninjas.com/studio/problems/subset-sum_3843086?utm_source=striver&utm_medium=website&utm_campaign=a_zcoursetuf&leftPanelTabValue=SUBMISSION
+
+
+void permute(int index, int sum, vector<int> &nums, vector<int> &ans)
+{
+	if(index == nums.size())
+	{
+		ans.push_back(sum);
+		return;
+	}
+	permute(index + 1, sum + nums[index], nums, ans);
+	permute(index + 1, sum, nums, ans);
+}
+
+vector<int> subsetSum(vector<int> &num){
+	vector<int> ans;
+	permute(0, 0, num, ans);
+	sort(ans.begin(), ans.end());
+	return ans;	
+}
