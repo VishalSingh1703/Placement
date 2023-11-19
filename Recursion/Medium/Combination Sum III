@@ -1,0 +1,39 @@
+https://leetcode.com/problems/combination-sum-iii/
+
+class Solution 
+{
+    vector<vector<int>> ans;
+public:
+    int sum(vector<int> &comb)
+    {
+        int sum = 0;
+        for(auto i:comb)
+        {
+            sum += i;
+        }
+        return sum;
+    }
+
+    void permute(int size, int target, vector<int> &comb, int index)
+    {
+        if(size == 0)
+        {
+            if(sum(comb) == target)
+            {
+                ans.push_back(comb);
+            }
+            return;
+        }
+        if(index>9) return;
+        comb.push_back(index);
+        permute(size - 1, target, comb, index+1);
+        comb.pop_back();
+        permute(size, target, comb, index+1);
+    }
+    vector<vector<int>> combinationSum3(int k, int n) 
+    {
+        vector<int> comb;
+        permute(k, n, comb, 1);
+        return ans;
+    }
+};
