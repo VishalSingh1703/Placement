@@ -1,0 +1,36 @@
+https://leetcode.com/problems/count-nice-pairs-in-an-array/?envType=daily-question&envId=2023-11-21
+
+<-- Explanation
+A[i] + rev(A[j]) == A[j] + rev(A[i])
+A[i] - rev(A[i]) == A[j] - rev(A[j])
+B[i] = A[i] - rev(A[i])
+
+Then it becomes an easy question that,
+how many pairs in B with B[i] == B[j] -->
+
+
+class Solution {
+public:
+    int rev(int num)
+    {
+        int rever = 0;
+        while(num>0)
+        {
+            rever *= 10;
+            rever += num%10;
+            num /= 10;
+        }
+        return rever;
+    }
+    
+    int countNicePairs(vector<int>& nums) 
+    {
+        int ans = 0, m = 1e9 + 7;
+        unordered_map<int, int> count;
+        for(int &num:nums)
+        {
+            ans = (ans + count[num - rev(num)]++) % m;
+        }
+        return ans;
+    }
+};
