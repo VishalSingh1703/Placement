@@ -13,5 +13,7 @@ public:
             goal>>=1;
         }
         return count;
+
+        // return __builtin_popcount(start^goal);      This is a built in function
     }
 };
