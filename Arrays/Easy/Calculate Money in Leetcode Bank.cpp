@@ -4,17 +4,13 @@ https://leetcode.com/problems/calculate-money-in-leetcode-bank/?envType=daily-qu
 class Solution {
 public:
     int totalMoney(int n) {
-        int weeks = n/7;
-        int res = 0;
-        for(int i=1; i<=weeks; i++)
+        int a = 0;
+        int output = 0;
+        for(int i = 0; i<n; i++)
         {
-            res += 7*(i+3);
+            if(i%7 == 0) a = i/7 + 1; // gives the numnber of weeks
+            output += a + i%7; // adds the weeks to the number of days,
         }
-        
-        for(int i = 7*weeks; i<n; i++)
-        {
-            res += ++weeks;
-        }
-        return res;
+        return output;
     }
 };
