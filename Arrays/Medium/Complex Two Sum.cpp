@@ -1,4 +1,4 @@
-[Pair Sum](https://www.codingninjas.com/studio/problems/pair-sum_697295?utm_source=striver&utm_medium=website&utm_campaign=a_zcoursetuf&leftPanelTabValue=PROBLEM)
+https://www.codingninjas.com/studio/problems/pair-sum_697295?utm_source=striver&utm_medium=website&utm_campaign=a_zcoursetuf&leftPanelTabValue=PROBLEM
 
 //There is a minor bug in the code
 
