@@ -3,14 +3,19 @@ https://leetcode.com/problems/surrounded-regions/
 
 class Solution {
 public:
+    vector<int> nums = {1, 0, -1, 0, 1};
     void dfs(int i, int j, int m, int n, vector<vector<char>>& board)
     {
         if(i<0 || j<0 || i>=m || j>=n || board[i][j] != 'O') return;
         board[i][j] = '#';
-        dfs(i+1, j, m, n, board);
-        dfs(i-1, j, m, n, board);
-        dfs(i, j+1, m, n, board);
-        dfs(i, j-1, m, n, board);
+        for(int it = 0; it<4; it++)
+        {
+            dfs(i+nums[it], j+nums[it+1], m, n, board);
+        }
+        // dfs(i+1, j, m, n, board);
+        // dfs(i-1, j, m, n, board);
+        // dfs(i, j+1, m, n, board);
+        // dfs(i, j-1, m, n, board);
     }
 
     void solve(vector<vector<char>>& board) {
