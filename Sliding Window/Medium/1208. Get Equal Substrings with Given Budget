@@ -1,0 +1,22 @@
+https://leetcode.com/problems/get-equal-substrings-within-budget/?envType=daily-question&envId=2024-05-28
+
+
+class Solution {
+public:
+    int equalSubstring(string s, string t, int maxCost) 
+    {
+        int left = 0, right = 0, ans = 0;
+        while(right < s.length())
+        {
+            maxCost -= abs(s[right] - t[right]);
+            right++;
+            while(maxCost < 0 && left <= right)
+            {
+                maxCost += abs(s[left] - t[left]);
+                left++;
+            }
+            ans = max(ans, right - left);
+        }
+        return ans;
+    }
+};
